@@ -5,7 +5,6 @@ import { SectionTitle } from "./SectionTitle";
 
 const quotes: { da: string; ar: string }[] = [
   { da: "Tak fordi du altid var der.", ar: "شكرا حيت دايما كنتي حدانا." },
-  { da: "Du er familiens styrke.", ر: "" } as never,
   { da: "Du er familiens styrke.", ar: "نتا السند ديالنا." },
   { da: "Din kærlighed lyser stadig vejen.", ar: "محبتك بقات كتنور الطريق." },
   { da: "Må Gud beskytte dig, far.", ar: "الله يخليك لينا يا بابا." },
