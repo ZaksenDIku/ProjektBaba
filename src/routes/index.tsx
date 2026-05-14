@@ -1,26 +1,39 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { I18nProvider } from "@/lib/i18n";
+import { LanguageToggle } from "@/components/LanguageToggle";
+import { Hero } from "@/components/Hero";
+import { Journey } from "@/components/Journey";
+import { FamilyTree } from "@/components/FamilyTree";
+import { Quotes } from "@/components/Quotes";
+import { Gallery } from "@/components/Gallery";
+import { Letter } from "@/components/Letter";
 
 export const Route = createFileRoute("/")({
   component: Index,
+  head: () => ({
+    meta: [
+      { title: "Til verdens bedste far · إلى أعز أب فالدنيا" },
+      {
+        name: "description",
+        content:
+          "En cinematisk og emotionel digital hyldest til en elsket far — en rejse gennem liv, familie og kærlighed.",
+      },
+    ],
+  }),
 });
 
-// IMPORTANT: Replace this placeholder. For sites with multiple pages (About, Services, Contact, etc.),
-// create separate route files (about.tsx, services.tsx, contact.tsx) — don't put all pages in this file.
-function PlaceholderIndex() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}
-
 function Index() {
-  return <PlaceholderIndex />;
+  return (
+    <I18nProvider>
+      <main className="relative min-h-screen bg-background text-foreground">
+        <LanguageToggle />
+        <Hero />
+        <Journey />
+        <FamilyTree />
+        <Quotes />
+        <Gallery />
+        <Letter />
+      </main>
+    </I18nProvider>
+  );
 }
