@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="240" viewBox="0 0 240 240" fill="none" opacity="0.08">
+  <defs>
+    <pattern id="p" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
+      <g stroke="#d4af56" stroke-width="0.6" fill="none">
+        <path d="M40 0 L80 40 L40 80 L0 40 Z"/>
+        <path d="M40 10 L70 40 L40 70 L10 40 Z"/>
+        <circle cx="40" cy="40" r="6"/>
+        <path d="M40 28 L52 40 L40 52 L28 40 Z"/>
+        <path d="M0 0 L20 20 M80 0 L60 20 M0 80 L20 60 M80 80 L60 60"/>
+      </g>
+    </pattern>
+  </defs>
+  <rect width="240" height="240" fill="url(#p)"/>
+</svg>
