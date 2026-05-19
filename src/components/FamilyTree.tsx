@@ -1,9 +1,10 @@
 import { motion } from "motion/react";
 import { useState, type ChangeEvent } from "react";
 import { useI18n, dict } from "@/lib/i18n";
+import { siteImages } from "@/lib/site-images";
 import { SectionTitle } from "./SectionTitle";
 import { Upload } from "lucide-react";
-import father from "@/assets/father-hero.jpg";
+import fatherFallback from "@/assets/father-hero.jpg";
 
 const children = [
   { key: "amal", age: 43 },
@@ -16,6 +17,7 @@ const children = [
 
 function FatherCard() {
   const { t, lang } = useI18n();
+  const [father, setFather] = useState(siteImages.father);
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.9 }}
@@ -25,7 +27,12 @@ function FatherCard() {
       className="flex flex-col items-center gap-3 text-center"
     >
       <div className="relative h-40 w-40 overflow-hidden rounded-full border border-gold/60 ring-gold sm:h-48 sm:w-48">
-        <img src={father} alt="" className="h-full w-full object-cover" />
+        <img
+          src={father}
+          alt=""
+          className="h-full w-full object-cover"
+          onError={() => setFather(fatherFallback)}
+        />
       </div>
       <div className={`text-lg italic text-gold sm:text-xl ${lang === "ar" ? "font-arabic not-italic font-medium" : "font-display"}`}>
         {t("hero.name")}
@@ -37,7 +44,8 @@ function FatherCard() {
 
 function ChildCard({ child, idx }: { child: (typeof children)[number]; idx: number }) {
   const { t, lang } = useI18n();
-  const [img, setImg] = useState<string | null>(null);
+  const defaultImg = siteImages.family[child.key];
+  const [img, setImg] = useState<string | null>(defaultImg);
 
   const onUpload = (e: ChangeEvent<HTMLInputElement>) => {
     const f = e.target.files?.[0];
@@ -57,7 +65,14 @@ function ChildCard({ child, idx }: { child: (typeof children)[number]; idx: numb
     >
       <label className="group relative h-28 w-28 cursor-pointer overflow-hidden rounded-full border border-border sm:h-32 sm:w-32">
         {img ? (
-          <img src={img} alt="" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" />
+          <img
+            src={img}
+            alt=""
+            className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+            onError={() => {
+              if (img === defaultImg) setImg(null);
+            }}
+          />
         ) : (
           <div className="flex h-full w-full items-center justify-center bg-card text-muted-foreground transition-colors group-hover:text-gold">
             <Upload className="h-5 w-5" strokeWidth={1.2} />

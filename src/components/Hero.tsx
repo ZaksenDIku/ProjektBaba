@@ -1,10 +1,12 @@
 import { motion, useScroll, useTransform } from "motion/react";
-import { useRef } from "react";
-import father from "@/assets/father-hero.jpg";
+import { useRef, useState } from "react";
+import fatherFallback from "@/assets/father-hero.jpg";
 import { useI18n } from "@/lib/i18n";
+import { siteImages } from "@/lib/site-images";
 
 export function Hero() {
   const { t, lang } = useI18n();
+  const [father, setFather] = useState(siteImages.father);
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], [0, 200]);
@@ -34,7 +36,14 @@ export function Hero() {
         >
           <div className="absolute -inset-6 rounded-full bg-gradient-to-br from-[oklch(0.88_0.09_85)]/40 to-transparent blur-2xl" />
           <div className="relative h-44 w-44 overflow-hidden rounded-full border border-[oklch(0.82_0.14_82_/_0.4)] ring-gold sm:h-56 sm:w-56">
-            <img src={father} alt="" className="h-full w-full object-cover" width={1536} height={1536} />
+            <img
+              src={father}
+              alt=""
+              className="h-full w-full object-cover"
+              width={1536}
+              height={1536}
+              onError={() => setFather(fatherFallback)}
+            />
             <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent" />
           </div>
         </motion.div>

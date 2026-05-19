@@ -7,6 +7,7 @@ import { FamilyTree } from "@/components/FamilyTree";
 import { Quotes } from "@/components/Quotes";
 import { Gallery } from "@/components/Gallery";
 import { Letter } from "@/components/Letter";
+import { ImageManager } from "@/components/ImageManager";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -33,6 +34,7 @@ function Index() {
         <Quotes />
         <Gallery />
         <Letter />
+        <ImageManager />
       </main>
     </I18nProvider>
   );

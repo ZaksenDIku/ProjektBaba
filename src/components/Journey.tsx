@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import { useState, type ChangeEvent } from "react";
 import { useI18n } from "@/lib/i18n";
+import { siteImages } from "@/lib/site-images";
 import { SectionTitle } from "./SectionTitle";
 import { Upload } from "lucide-react";
 
@@ -45,7 +46,8 @@ const chapters = [
 
 function ChapterCard({ idx, chapter }: { idx: number; chapter: (typeof chapters)[number] }) {
   const { lang } = useI18n();
-  const [img, setImg] = useState<string | null>(null);
+  const defaultImg = siteImages.journey[chapter.key];
+  const [img, setImg] = useState<string | null>(defaultImg);
   const isLeft = idx % 2 === 0;
 
   const onUpload = (e: ChangeEvent<HTMLInputElement>) => {
@@ -68,7 +70,14 @@ function ChapterCard({ idx, chapter }: { idx: number; chapter: (typeof chapters)
     >
       <label className="group relative block aspect-[4/3] cursor-pointer overflow-hidden rounded-2xl border border-border bg-card [direction:ltr]">
         {img ? (
-          <img src={img} alt="" className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105" />
+          <img
+            src={img}
+            alt=""
+            className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105"
+            onError={() => {
+              if (img === defaultImg) setImg(null);
+            }}
+          />
         ) : (
           <div className="flex h-full w-full flex-col items-center justify-center gap-3 text-muted-foreground transition-colors group-hover:text-gold">
             <Upload className="h-7 w-7" strokeWidth={1.2} />

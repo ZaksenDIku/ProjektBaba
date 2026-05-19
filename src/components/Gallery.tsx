@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from "motion/react";
 import { useState, type ChangeEvent } from "react";
 import { useI18n } from "@/lib/i18n";
+import { siteImages } from "@/lib/site-images";
 import { SectionTitle } from "./SectionTitle";
 import { Upload, X, MapPin } from "lucide-react";
 
@@ -13,12 +14,12 @@ interface Item {
 }
 
 const initial: Item[] = [
-  { id: 1, src: "", caption_da: "", caption_ar: "", span: "row-span-2" },
-  { id: 2, src: "", caption_da: "", caption_ar: "", span: "" },
-  { id: 3, src: "", caption_da: "", caption_ar: "", span: "" },
-  { id: 4, src: "", caption_da: "", caption_ar: "", span: "row-span-2" },
-  { id: 5, src: "", caption_da: "", caption_ar: "", span: "" },
-  { id: 6, src: "", caption_da: "", caption_ar: "", span: "" },
+  { id: 1, src: siteImages.gallery[0], caption_da: "", caption_ar: "", span: "row-span-2" },
+  { id: 2, src: siteImages.gallery[1], caption_da: "", caption_ar: "", span: "" },
+  { id: 3, src: siteImages.gallery[2], caption_da: "", caption_ar: "", span: "" },
+  { id: 4, src: siteImages.gallery[3], caption_da: "", caption_ar: "", span: "row-span-2" },
+  { id: 5, src: siteImages.gallery[4], caption_da: "", caption_ar: "", span: "" },
+  { id: 6, src: siteImages.gallery[5], caption_da: "", caption_ar: "", span: "" },
 ];
 
 export function Gallery() {
@@ -82,7 +83,16 @@ export function Gallery() {
             {it.src ? (
               <>
                 <button onClick={() => setOpen(it)} className="block h-full w-full">
-                  <img src={it.src} alt="" className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-110" />
+                  <img
+                    src={it.src}
+                    alt=""
+                    className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                    onError={() => {
+                      if (siteImages.gallery.includes(it.src as (typeof siteImages.gallery)[number])) {
+                        setItems((prev) => prev.map((item) => (item.id === it.id ? { ...item, src: "" } : item)));
+                      }
+                    }}
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
                 </button>
                 <div className="absolute inset-x-0 bottom-0 p-3 opacity-0 transition-opacity group-hover:opacity-100">
