@@ -4,11 +4,24 @@ import { useI18n } from "@/lib/i18n";
 import { SectionTitle } from "./SectionTitle";
 
 const quotes: { da: string; ar: string }[] = [
-  { da: "Tak fordi du altid var der.", ar: "شكرا حيت دايما كنتي حدانا." },
-  { da: "Du er familiens styrke.", ar: "نتا السند ديالنا." },
-  { da: "Din kærlighed lyser stadig vejen.", ar: "محبتك بقات كتنور الطريق." },
-  { da: "Må Gud beskytte dig, far.", ar: "الله يخليك لينا يا بابا." },
-  { da: "Hvert ord du sagde, blev til et fyrtårn.", ar: "كل كلمة قلتيها ولات منارة." },
+  { da: "En far for mange — men for os var du hele verden.", ar: "بّا لبزاف — ولكن لينا حنا كنتي الدنيا كاملة." },
+  { da: "Vi så ikke alt det du ofrede dengang. Det gør vi nu.", ar: "ما شفناش كل اللي ضحّيتي بيه دوك الوقت. دابا كنشوفوه." },
+  { da: "Du gav os et hjem fyldt med kærlighed, selv på de svære dage.", ar: "عطيتنا دار عامرة بالمحبة، حتى فالنهارات الصعيبة." },
+  { da: "Din styrke blev fundamentet for vores liv.", ar: "قوتك ولات الأساس ديال حياتنا." },
+  { da: "Du var aldrig bare far — du var tryghed.", ar: "عمرك ما كنتي غير بّا — كنتي الأمان." },
+  { da: "En mand med rolige hænder og et stort hjerte.", ar: "راجل بيدين هادية وقلب كبير." },
+  { da: "Du lærte os at stå stærkt uden at miste vores godhed.", ar: "علمتينا نوقفو بقوة بلا ما نتلفو طيبتنا." },
+  { da: "Din kærlighed lå i handlingerne, ikke i de store ord.", ar: "محبتك كانت فالأفعال، ماشي فالكلام الكبير." },
+  { da: "Du har båret mere for familien, end vi nogensinde helt kommer til at forstå.", ar: "حملتي على العائلة أكثر من ما غادي نفهموه يوما." },
+  { da: "Bag vores smil findes der altid lidt af dig.", ar: "ورا ضحكتنا دايما كاينة شوية منك." },
+  { da: "Du gjorde plads til alle os børn i dit hjerte.", ar: "دّيرتي بلاصة لينا كاملين فقلبك." },
+  { da: "Dit nærvær gjorde selv de almindelige dage specielle.", ar: "حضورك خلّى حتى النهارات العادية مميزة." },
+  { da: "Du gav os styrke, når livet blev tungt.", ar: "عطيتنا القوة ملي الحياة ولات ثقيلة." },
+  { da: "For verden er du én mand — for os er du fundamentet.", ar: "للدنيا نتا راجل واحد — لينا حنا نتا الأساس." },
+  { da: "En fars kærlighed ses tydeligst i de børn, han har opdraget.", ar: "محبة الباب كتبان واضحة فالأولاد اللي ربّا." },
+  { da: "Du byggede ikke bare en familie — du holdt den sammen.", ar: "ما بنيتيش غير عائلة — شدّيتيها بيدّيك." },
+  { da: "Manden der lærte os, at ansvar også er kærlighed.", ar: "الراجل اللي علمنا بلي المسؤولية هي تاني محبة." },
+  { da: "Du var der for os i største bekymringer, første ofre og største kærlighed.", ar: "كنتي معانا فأكبر الهموم، أول التضحيات وأكبر محبة." },
 ];
 
 export function Quotes() {
