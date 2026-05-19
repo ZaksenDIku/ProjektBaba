@@ -5,49 +5,74 @@ export type Lang = "da" | "ar";
 type Dict = Record<string, { da: string; ar: string }>;
 
 export const dict: Dict = {
-  "nav.journey": { da: "Rejsen", ar: "الرحلة" },
-  "nav.family": { da: "Familie", ar: "العائلة" },
+  "nav.journey": { da: "Kapitler", ar: "الفصول" },
+  "nav.family": { da: "Børnene", ar: "الأولاد" },
   "nav.quotes": { da: "Ord", ar: "كلمات" },
-  "nav.gallery": { da: "Minder", ar: "ذكريات" },
+  "nav.gallery": { da: "Oprindelsen", ar: "البداية" },
   "nav.letter": { da: "Brevet", ar: "الرسالة" },
 
   "hero.title": { da: "Til verdens bedste far", ar: "إلى أعز أب فالدنيا" },
-  "hero.sub": {
-    da: "En lille rejse gennem et stort liv — fyldt med kærlighed, ofre og minder vi aldrig glemmer.",
-    ar: "رحلة صغيرة فحياة كبيرة — عامرة بالحب والتضحية وذكريات ما كنغلسوهاش.",
+  "hero.name": { da: "Yahya Berrhili", ar: "يحيى برحيلي" },
+  "hero.verse.ref": { da: "Surah An-Nisa 4:36", ar: "سورة النساء ٤:٣٦" },
+  "hero.verse.ar": {
+    da: "وَٱعْبُدُوا۟ ٱللَّهَ وَلَا تُشْرِكُوا۟ بِهِۦ شَيْـًٔا ۖ وَبِٱلْوَٰلِدَيْنِ إِحْسَـٰنًا",
+    ar: "وَٱعْبُدُوا۟ ٱللَّهَ وَلَا تُشْرِكُوا۟ بِهِۦ شَيْـًٔا ۖ وَبِٱلْوَٰلِدَيْنِ إِحْسَـٰنًا",
+  },
+  "hero.verse.da": {
+    da: "“Tilbed Allah og sæt ingen ved Hans side, og vær gode mod forældre…”",
+    ar: "“اعبدوا الله ولا تشركوا به شيئا، وأحسنوا للوالدين…”",
   },
   "hero.scroll": { da: "Rul ned", ar: "كمل لتحت" },
 
-  "journey.title": { da: "Et liv i kapitler", ar: "حياة فالفصول" },
-  "journey.sub": { da: "Fra en ung drøm til familiens hjerte.", ar: "من حلم صغير حتى قلب العائلة." },
-  "journey.youth.t": { da: "Ungdom", ar: "الشبيبة" },
-  "journey.youth.d": { da: "Drømmene begyndte tidligt — en ung mand med et stort hjerte.", ar: "الأحلام بداو بكري — شاب بقلب كبير." },
-  "journey.father.t": { da: "Bliver far", ar: "أصبح أب" },
-  "journey.father.d": { da: "Den dag livet fik en ny mening.", ar: "النهار اللي الحياة تبدلات معناها." },
-  "journey.family.t": { da: "Familielivet", ar: "الحياة العائلية" },
-  "journey.family.d": { da: "Et hjem bygget på kærlighed, latter og varme måltider.", ar: "دار مبنية على المحبة، الضحك والماكلة سخونة." },
-  "journey.sacrifice.t": { da: "Ofrene", ar: "التضحيات" },
-  "journey.sacrifice.d": { da: "Du gav alt, så vi kunne få verden.", ar: "عطيتي كلشي باش حنا نلقاو الدنيا." },
-  "journey.memories.t": { da: "Minderne", ar: "الذكريات" },
-  "journey.memories.d": { da: "Små øjeblikke der blev til evighed.", ar: "لحظات صغار ولاو دائمين فقلوبنا." },
-  "journey.joy.t": { da: "Glæden", ar: "الفرحة" },
-  "journey.joy.d": { da: "At se dig le er familiens største skat.", ar: "كنشوفوك كتضحك هي أحلى كنز." },
+  "journey.title": { da: "Gennem alle vores kapitler", ar: "عبر جميع فصولنا" },
+  "journey.sub": {
+    da: "Du har været der for alle dine børn — gennem alle deres kapitler.",
+    ar: "كنتي حدا ولادك كاملين — فكل فصول حياتهم.",
+  },
 
-  "family.title": { da: "Familietræet", ar: "شجرة العائلة" },
-  "family.sub": { da: "Roden vi alle vokser fra.", ar: "العرق اللي حنا كلنا كنطلعو منه." },
+  "family.title": { da: "Børnene", ar: "الأولاد" },
+  "family.sub": { da: "Seks hjerter formet af én far.", ar: "ستة قلوب صاوبهم بّا واحد." },
   "family.father": { da: "Far", ar: "بابا" },
-  "family.child": { da: "Barn", ar: "ولد" },
-  "family.quote": { da: "Et lille citat…", ar: "كلمة صغيرة…" },
+  "family.years": { da: "år", ar: "عام" },
+
+  "child.amal.name": { da: "Amal", ar: "أمل" },
+  "child.amal.d": {
+    da: "Personen der gjorde dig til far første gang, hvis opdragelse og gode maner har banet vej for alle os andre.",
+    ar: "هي اللي ولاتك بّا أول مرة، تربيتها وأخلاقها فتحات الطريق لينا كاملين.",
+  },
+  "child.siham.name": { da: "Siham", ar: "سهام" },
+  "child.siham.d": {
+    da: "Din store datter, der lærte kærlighed, styrke og omsorg gennem dig.",
+    ar: "بنتك الكبيرة، اللي تعلمات الحب والقوة والحنان منك.",
+  },
+  "child.mohammed.name": { da: "Mohammed", ar: "محمد" },
+  "child.mohammed.d": {
+    da: "Ældste søn der lærte og altid fandt tryghed i din stemme, så han kunne være en tryghed for andre.",
+    ar: "الولد الكبير اللي دايما لقا الأمان فصوتك، حتى ولا هو الأمان لغيرو.",
+  },
+  "child.jihan.name": { da: "Jihan", ar: "جيهان" },
+  "child.jihan.d": { da: "En datter som stadig bærer dine råd med sig hver eneste dag.", ar: "بنت باقا كتحمل نصائحك معاها كل نهار." },
+  "child.ihan.name": { da: "Ihan", ar: "إيهان" },
+  "child.ihan.d": { da: "Din yngste datter, du lærte respekt uden nogensinde at kræve frygt.", ar: "بنتك الصغيرة، علمتيها الاحترام بلا ما تطلب منها الخوف." },
+  "child.zakariya.name": { da: "Zakariya", ar: "زكرياء" },
+  "child.zakariya.d": {
+    da: "Din yngste søn, der stadig ser op til dig med samme beundring som da han var lille.",
+    ar: "ولدك الصغير، باقي كيشوف ليك بنفس الإعجاب بحال ملي كان صغير.",
+  },
 
   "quotes.title": { da: "Ord fra hjertet", ar: "كلمات من القلب" },
 
-  "gallery.title": { da: "Minder", ar: "ذكريات" },
-  "gallery.sub": { da: "Øjeblikke fanget i tid.", ar: "لحظات مشدودة فالوقت." },
+  "gallery.title": { da: "Hvor det hele startede", ar: "من فين بدا كلشي" },
+  "gallery.sub": {
+    da: "Manden der startede med intet, men gav det hele til sine børn.",
+    ar: "الراجل اللي بدا بلا والو، وعطا كلشي لولادو.",
+  },
+  "gallery.map.label": { da: "Oujda · Marokko", ar: "وجدة · المغرب" },
 
   "letter.title": { da: "Et brev til dig, far", ar: "رسالة ليك يا بابا" },
   "letter.body": {
-    da: "Kære far,\n\nDu lærte os, hvad det vil sige at elske uden betingelser. Du var vores første helt, vores stille styrke, vores trygge havn. Hver dag bærer vi din kærlighed videre — i vores grin, i vores valg, i vores hjerter.\n\nTak fordi du er dig.\n\nVi elsker dig højere, end ord nogensinde kan sige.",
-    ar: "بابا الغالي،\n\nعلمتينا شنو معناها الحب بلا شروط. كنتي العروة لينا، السند ديالنا، والمرسى الآمن. كل نهار كنحملو حبك معانا — فضحكتنا، فاختياراتنا، فقلوبنا.\n\nشكرا حيت نتا هو نتا.\n\nكنبغيوك بزاف، أكثر من ما تقدر تقولو الكلمات.",
+    da: "Kære far,\n\nDet er svært at sætte ord på et helt livs kærlighed.\n\nDu har været der i alle vores kapitler — i de gode dage, de svære dage og alle de stille øjeblikke imellem. Du har båret familien med styrke, tålmodighed og et hjerte, der altid satte os før dig selv.\n\nSom børn så vi dig bare som far.\nMen jo ældre vi bliver, jo mere forstår vi alt det, du gjorde for os. Alle ofrene. Alle bekymringerne. Alt det ansvar du bar uden nogensinde at klage.\n\nDu gav os tryghed, selv når livet ikke var nemt.\nDu lærte os respekt, kærlighed og hvad det vil sige at være der for dem man elsker.\n\nMåske har vi ikke altid sagt det nok.\nMen alt det gode i os kommer et sted fra.\n\nFra dig.\n\nOg selv når tiden går, og vi alle lever vores egne liv, vil en del af os altid være de børn, der fandt ro i din tilstedeværelse.\n\nTak for hver eneste ting du har gjort for os.\nTak for dit hjerte.\nTak fordi du er vores far.\n\nVi elsker dig mere, end ord nogensinde vil kunne beskrive.\n\n— Dine børn",
+    ar: "بابا الغالي،\n\nصعيب نلقاو الكلمات باش نوصفو حب عمر كامل.\n\nكنتي معانا فكل فصول حياتنا — فالنهارات الزوينة، والصعيبة، وكل اللحظات الهادية بيناتهم. حملتي العائلة بالقوة، والصبر، وقلب دايما كيحطنا قبل راسك.\n\nملي كنا صغار شفناك بحال غير بابا.\nولكن كيف ما كنكبرو، كنفهمو أكثر كلشي اللي درتي علينا. كل التضحيات. كل الهموم. كل المسؤولية اللي حملتي بلا ما تشكي.\n\nعطيتنا الأمان، حتى ملي الحياة ماكانتش ساهلة.\nعلمتينا الاحترام، المحبة، وشنو معناها تكون حدا اللي كتبغي.\n\nيمكن ماقلناهاش ليك بزاف.\nولكن كلشي زوين فينا جا من بلاصة.\n\nمنك.\n\nوحتى ملي يدوز الوقت، وكل واحد فينا كيعيش حياتو، غادي تبقى جزء فينا هاديك الأولاد اللي لقاو الهدوء فحضورك.\n\nشكرا على كل حاجة درتيها علينا.\nشكرا على قلبك.\nشكرا حيت نتا بابانا.\n\nكنبغيوك أكثر من ما تقدر تقولو الكلمات.\n\n— ولادك",
   },
   "letter.music": { da: "Spil musik", ar: "شغل الموسيقى" },
   "letter.music.off": { da: "Stop musik", ar: "وقف الموسيقى" },

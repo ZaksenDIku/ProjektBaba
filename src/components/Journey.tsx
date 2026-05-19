@@ -1,20 +1,50 @@
 import { motion } from "motion/react";
 import { useState, type ChangeEvent } from "react";
-import { useI18n, type Lang } from "@/lib/i18n";
+import { useI18n } from "@/lib/i18n";
 import { SectionTitle } from "./SectionTitle";
 import { Upload } from "lucide-react";
 
 const chapters = [
-  { key: "youth", year: "1960s" },
-  { key: "father", year: "1985" },
-  { key: "family", year: "1990s" },
-  { key: "sacrifice", year: "2000s" },
-  { key: "memories", year: "2010s" },
-  { key: "joy", year: "Today" },
+  {
+    key: "capes",
+    eyebrow: { da: "Kærlighed", ar: "المحبة" },
+    da: "Nogle helte bærer ikke kapper — de kalder sig bare far.",
+    ar: "بعض الأبطال ما كيلبسوش الكاب — كيتسماو غير بّا.",
+  },
+  {
+    key: "strength",
+    eyebrow: { da: "Styrke", ar: "القوة" },
+    da: "Du lærte os styrke uden at hæve stemmen.",
+    ar: "علمتينا القوة بلا ما ترفع صوتك.",
+  },
+  {
+    key: "carry",
+    eyebrow: { da: "Ofre", ar: "التضحيات" },
+    da: "Vi forstod først senere, hvor meget du bar for os.",
+    ar: "غير من بعد فهمنا شحال حملتي علينا.",
+  },
+  {
+    key: "home",
+    eyebrow: { da: "Hjemmet", ar: "الدار" },
+    da: "Dit hjerte byggede det hjem, vi stadig vender tilbage til.",
+    ar: "قلبك هو اللي بنا الدار اللي مازال كنرجعو ليها.",
+  },
+  {
+    key: "together",
+    eyebrow: { da: "Familie", ar: "العائلة" },
+    da: "Du holdt sammen på familien, selv når livet blev svært.",
+    ar: "شدّيتي العائلة، حتى ملي الحياة ولات صعيبة.",
+  },
+  {
+    key: "loved",
+    eyebrow: { da: "Taknemmelighed", ar: "الامتنان" },
+    da: "Vi blev aldrig i tvivl om, at vi var elsket.",
+    ar: "عمرنا ما شكّينا بلي كنّا محبوبين.",
+  },
 ] as const;
 
 function ChapterCard({ idx, chapter }: { idx: number; chapter: (typeof chapters)[number] }) {
-  const { t, lang } = useI18n();
+  const { lang } = useI18n();
   const [img, setImg] = useState<string | null>(null);
   const isLeft = idx % 2 === 0;
 
@@ -23,8 +53,8 @@ function ChapterCard({ idx, chapter }: { idx: number; chapter: (typeof chapters)
     if (f) setImg(URL.createObjectURL(f));
   };
 
-  const titleKey = `journey.${chapter.key}.t` as const;
-  const descKey = `journey.${chapter.key}.d` as const;
+  const eyebrow = lang === "ar" ? chapter.eyebrow.ar : chapter.eyebrow.da;
+  const quote = lang === "ar" ? chapter.ar : chapter.da;
 
   return (
     <motion.div
@@ -36,7 +66,6 @@ function ChapterCard({ idx, chapter }: { idx: number; chapter: (typeof chapters)
         isLeft ? "" : "md:[direction:rtl]"
       }`}
     >
-      {/* Image */}
       <label className="group relative block aspect-[4/3] cursor-pointer overflow-hidden rounded-2xl border border-border bg-card [direction:ltr]">
         {img ? (
           <img src={img} alt="" className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105" />
@@ -47,20 +76,16 @@ function ChapterCard({ idx, chapter }: { idx: number; chapter: (typeof chapters)
           </div>
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-60" />
-        <div className="absolute left-4 top-4 rounded-full border border-gold/40 bg-background/60 px-3 py-1 text-[10px] uppercase tracking-[0.3em] text-gold backdrop-blur">
-          {chapter.year}
-        </div>
         <input type="file" accept="image/*" className="hidden" onChange={onUpload} />
       </label>
 
-      {/* Text */}
       <div className="[direction:ltr]">
-        <h3 className={`text-3xl ${lang === "ar" ? "font-arabic font-medium" : "font-display font-light italic"}`}>
-          <span className="gradient-gold-text">{t(titleKey as Parameters<typeof t>[0])}</span>
+        <div className={`text-[10px] uppercase tracking-[0.4em] text-gold/80 ${lang === "ar" ? "font-arabic tracking-normal text-sm" : ""}`}>
+          {eyebrow}
+        </div>
+        <h3 className={`mt-4 text-3xl leading-snug sm:text-4xl ${lang === "ar" ? "font-arabic font-medium" : "font-display font-light italic"}`}>
+          <span className="gradient-gold-text">“{quote}”</span>
         </h3>
-        <p className={`mt-4 text-muted-foreground leading-relaxed ${lang === "ar" ? "font-arabic text-lg" : ""}`}>
-          {t(descKey as Parameters<typeof t>[0])}
-        </p>
       </div>
     </motion.div>
   );
@@ -72,7 +97,6 @@ export function Journey() {
     <section id="journey" className="relative px-6 py-32">
       <SectionTitle eyebrow="01" title={t("journey.title")} sub={t("journey.sub")} />
       <div className="relative mx-auto max-w-5xl">
-        {/* Center vertical line */}
         <div className="pointer-events-none absolute left-1/2 top-0 hidden h-full w-px -translate-x-1/2 bg-gradient-to-b from-transparent via-gold/40 to-transparent md:block" />
         <div className="space-y-24">
           {chapters.map((c, i) => (
@@ -83,6 +107,3 @@ export function Journey() {
     </section>
   );
 }
-
-// satisfy unused import in some configs
-export type _L = Lang;

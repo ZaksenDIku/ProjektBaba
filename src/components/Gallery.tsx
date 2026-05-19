@@ -2,7 +2,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { useState, type ChangeEvent } from "react";
 import { useI18n } from "@/lib/i18n";
 import { SectionTitle } from "./SectionTitle";
-import { Upload, X } from "lucide-react";
+import { Upload, X, MapPin } from "lucide-react";
 
 interface Item {
   id: number;
@@ -19,8 +19,6 @@ const initial: Item[] = [
   { id: 4, src: "", caption_da: "", caption_ar: "", span: "row-span-2" },
   { id: 5, src: "", caption_da: "", caption_ar: "", span: "" },
   { id: 6, src: "", caption_da: "", caption_ar: "", span: "" },
-  { id: 7, src: "", caption_da: "", caption_ar: "", span: "row-span-2" },
-  { id: 8, src: "", caption_da: "", caption_ar: "", span: "" },
 ];
 
 export function Gallery() {
@@ -38,11 +36,40 @@ export function Gallery() {
   const updateCaption = (id: number, key: "caption_da" | "caption_ar", val: string) =>
     setItems((prev) => prev.map((it) => (it.id === id ? { ...it, [key]: val } : it)));
 
+  // OpenStreetMap embed centred on Oujda, Morocco (no API key required)
+  const mapSrc =
+    "https://www.openstreetmap.org/export/embed.html?bbox=-1.95%2C34.65%2C-1.85%2C34.72&layer=mapnik&marker=34.6814%2C-1.9086";
+
   return (
     <section id="gallery" className="relative px-6 py-32">
       <SectionTitle eyebrow="04" title={t("gallery.title")} sub={t("gallery.sub")} />
 
-      <div className="mx-auto grid max-w-6xl auto-rows-[180px] grid-cols-2 gap-3 sm:auto-rows-[220px] sm:grid-cols-3 md:grid-cols-4">
+      {/* Oujda map */}
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+        className="mx-auto mb-16 max-w-5xl"
+      >
+        <div className="relative overflow-hidden rounded-2xl border border-gold/30 bg-card shadow-deep">
+          <div className="absolute left-4 top-4 z-10 flex items-center gap-2 rounded-full border border-gold/40 bg-background/70 px-4 py-2 text-xs uppercase tracking-[0.3em] text-gold backdrop-blur-xl">
+            <MapPin className="h-3.5 w-3.5" strokeWidth={1.5} />
+            <span className={lang === "ar" ? "font-arabic tracking-normal text-sm" : ""}>
+              {t("gallery.map.label")}
+            </span>
+          </div>
+          <iframe
+            title="Oujda, Morocco"
+            src={mapSrc}
+            className="h-[360px] w-full grayscale-[0.4] sm:h-[460px]"
+            loading="lazy"
+          />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent" />
+        </div>
+      </motion.div>
+
+      <div className="mx-auto grid max-w-6xl auto-rows-[180px] grid-cols-2 gap-3 sm:auto-rows-[220px] sm:grid-cols-3">
         {items.map((it, i) => (
           <motion.div
             key={it.id}
