@@ -57,16 +57,37 @@ export function Hero() {
           <span className="gradient-gold-text">{t("hero.title")}</span>
         </motion.h1>
 
-        <motion.p
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.4, delay: 0.9 }}
-          className={`mt-8 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg ${
-            lang === "ar" ? "font-arabic text-xl" : ""
-          }`}
+          transition={{ duration: 1.4, delay: 0.8 }}
+          className="mt-6 flex flex-col items-center gap-2"
         >
-          {t("hero.sub")}
-        </motion.p>
+          <span className="text-[11px] uppercase tracking-[0.45em] text-gold/70">— Yahya Berrhili —</span>
+        </motion.div>
+
+        {/* Quran verse */}
+        <motion.figure
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.6, delay: 1.1, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-12 max-w-2xl rounded-2xl border border-gold/20 bg-background/30 px-6 py-7 backdrop-blur-xl sm:px-10"
+        >
+          <p dir="rtl" className="font-arabic text-2xl leading-[2.1] text-warm sm:text-3xl">
+            {t("hero.verse.ar")}
+          </p>
+          <div className="mx-auto my-5 h-px w-16 bg-gradient-to-r from-transparent via-gold/60 to-transparent" />
+          <p
+            className={`text-sm italic leading-relaxed text-muted-foreground sm:text-base ${
+              lang === "ar" ? "font-arabic not-italic text-base" : "font-display"
+            }`}
+          >
+            {t("hero.verse.da")}
+          </p>
+          <figcaption className="mt-4 text-[10px] uppercase tracking-[0.4em] text-gold/70">
+            {t("hero.verse.ref")}
+          </figcaption>
+        </motion.figure>
 
         <motion.div
           initial={{ opacity: 0 }}
