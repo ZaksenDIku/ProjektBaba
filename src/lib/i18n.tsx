@@ -68,6 +68,7 @@ export const dict: Dict = {
     ar: "الراجل اللي بدا بلا والو، وعطا كلشي لولادو.",
   },
   "gallery.map.label": { da: "Oujda · Marokko", ar: "وجدة · المغرب" },
+  "gallery.map.copenhagen": { da: "København · Danmark", ar: "كوبنهاغن · الدنمارك" },
 
   "letter.title": { da: "Et brev til dig, far", ar: "رسالة ليك يا بابا" },
   "letter.body": {

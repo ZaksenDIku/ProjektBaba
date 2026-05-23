@@ -37,37 +37,46 @@ export function Gallery() {
   const updateCaption = (id: number, key: "caption_da" | "caption_ar", val: string) =>
     setItems((prev) => prev.map((it) => (it.id === id ? { ...it, [key]: val } : it)));
 
-  // OpenStreetMap embed centred on Oujda, Morocco (no API key required)
-  const mapSrc =
-    "https://www.openstreetmap.org/export/embed.html?bbox=-1.95%2C34.65%2C-1.85%2C34.72&layer=mapnik&marker=34.6814%2C-1.9086";
+  const maps = [
+    {
+      label: t("gallery.map.label"),
+      title: "Oujda, Morocco",
+      src: "https://www.openstreetmap.org/export/embed.html?bbox=-1.95%2C34.65%2C-1.85%2C34.72&layer=mapnik&marker=34.6814%2C-1.9086",
+    },
+    {
+      label: t("gallery.map.copenhagen"),
+      title: "Copenhagen, Denmark",
+      src: "https://www.openstreetmap.org/export/embed.html?bbox=12.48%2C55.63%2C12.66%2C55.72&layer=mapnik&marker=55.6761%2C12.5683",
+    },
+  ];
 
   return (
     <section id="gallery" className="relative px-6 py-32">
       <SectionTitle eyebrow="04" title={t("gallery.title")} sub={t("gallery.sub")} />
 
-      {/* Oujda map */}
+      {/* Origin maps */}
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-80px" }}
         transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-        className="mx-auto mb-16 max-w-5xl"
+        className="mx-auto mb-16 grid max-w-5xl gap-4 md:grid-cols-2"
       >
-        <div className="relative overflow-hidden rounded-2xl border border-gold/30 bg-card shadow-deep">
-          <div className="absolute left-4 top-4 z-10 flex items-center gap-2 rounded-full border border-gold/40 bg-background/70 px-4 py-2 text-xs uppercase tracking-[0.3em] text-gold backdrop-blur-xl">
-            <MapPin className="h-3.5 w-3.5" strokeWidth={1.5} />
-            <span className={lang === "ar" ? "font-arabic tracking-normal text-sm" : ""}>
-              {t("gallery.map.label")}
-            </span>
+        {maps.map((map) => (
+          <div key={map.title} className="relative overflow-hidden rounded-2xl border border-gold/30 bg-card shadow-deep">
+            <div className="absolute left-4 top-4 z-10 flex items-center gap-2 rounded-full border border-gold/40 bg-background/70 px-4 py-2 text-xs uppercase tracking-[0.3em] text-gold backdrop-blur-xl">
+              <MapPin className="h-3.5 w-3.5" strokeWidth={1.5} />
+              <span className={lang === "ar" ? "font-arabic tracking-normal text-sm" : ""}>{map.label}</span>
+            </div>
+            <iframe
+              title={map.title}
+              src={map.src}
+              className="h-[320px] w-full grayscale-[0.4] sm:h-[420px]"
+              loading="lazy"
+            />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent" />
           </div>
-          <iframe
-            title="Oujda, Morocco"
-            src={mapSrc}
-            className="h-[360px] w-full grayscale-[0.4] sm:h-[460px]"
-            loading="lazy"
-          />
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent" />
-        </div>
+        ))}
       </motion.div>
 
       <div className="mx-auto grid max-w-6xl auto-rows-[180px] grid-cols-2 gap-3 sm:auto-rows-[220px] sm:grid-cols-3">
