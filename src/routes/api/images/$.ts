@@ -15,7 +15,10 @@ function json(body: unknown, init?: ResponseInit) {
 
 async function getWorkerEnv(): Promise<WorkerEnv> {
   try {
-    const workers = await import("cloudflare:workers");
+    const importCloudflareWorkers = new Function("return import('cloudflare:workers')") as () => Promise<{
+      env?: WorkerEnv;
+    }>;
+    const workers = await importCloudflareWorkers();
     return workers.env ?? {};
   } catch {
     return {};
